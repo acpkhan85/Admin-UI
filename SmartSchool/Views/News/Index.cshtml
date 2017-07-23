@@ -2,7 +2,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Events</h3>
+                <h3>News</h3>
             </div>
         </div>
 
@@ -13,7 +13,7 @@
                 <div class="x_panel">
                     <div class="x_content">
                         <div class="row">
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i>&nbsp;Add Event</button>
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i>&nbsp;Add News</button>
                         </div>
                         <div class="ln_solid"></div>
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -23,23 +23,21 @@
                                         <thead>
                                             <tr role="row">
                                                 <th>Title</th>
-                                                <th>Location</th>
-                                                <th>From Date</th>
-                                                <th>To Date</th>
+                                                <th>Description</th>
+                                                <th>Branches</th>                                                
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>                                           
+                                        <tbody>
                                             <tr role="row" class="odd">
-                                                <td class="sorting_1">Timothy Mooney</td>
-                                                <td>Manager's office</td>
-                                                <td>07/08/2017 6:00 PM</td>
-                                                <td>07/08/2017 8:00 PM</td>
-                                                <td>
-                                                 <i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                 &nbsp;<i title="edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                 &nbsp;<i title="edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                </td>                                                
+                                                <td class="sorting_1">School Concert</td>
+                                                <td >Lorem ipsum dolor sit amet, consectetuer adipiscing elitl
+                                                Donec quam feli...</td>                                              
+                                                <td>Dadar,Bandra</td>
+                                                <td><i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                                                &nbsp;<i title="edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                                                &nbsp;<i title="edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -60,7 +58,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel2">Add Event</h4>
+                <h4 class="modal-title" id="myModalLabel2">Add News</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal form-label-left">
@@ -69,11 +67,25 @@
                         <div class="col-md-10 col-sm-10 col-xs-12">
                             <input type="text" class="form-control" placeholder="Title">
                         </div>
-                    </div>
+                    </div>    
                     <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Location</label>
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Image</label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Location">
+                            <input type="text" class="form-control" placeholder="Upload Image">
+                        </div>
+                    </div>             
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Select Branch</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <select class="select2_multiple form-control" multiple="multiple">
+                                <option>Choose option</option>
+                                <option>Option one</option>
+                                <option>Option two</option>
+                                <option>Option three</option>
+                                <option>Option four</option>
+                                <option>Option five</option>
+                                <option>Option six</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,29 +94,6 @@
                             <textarea class="form-control" rows="3" placeholder='Description'></textarea>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12">From Date</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <div class="input-group date" id="fromDate">
-                                <input type="text" class="form-control" placeholder="From Date" readonly="readonly">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12">To Date</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <div class="input-group date" id="toDate">
-                                <input type="text" class="form-control" placeholder="To Date" readonly="readonly">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-2">
