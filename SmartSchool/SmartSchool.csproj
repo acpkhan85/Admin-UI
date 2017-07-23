@@ -122,10 +122,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NoticeBoardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4419,6 +4421,8 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\NoticeBoard\Index.cshtml" />
+    <Content Include="Views\Class\Division.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
