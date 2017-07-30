@@ -18,5 +18,34 @@ namespace SmartSchool.Controllers
         {
             return View();
         }
+
+        public ActionResult StudentSetUp()
+        {
+            return View();
+        }
+
+        public ActionResult ExamTimeTable()
+        {
+            return View();
+        }
+
+        public ActionResult TimeTable()
+        {
+            return View();
+        }
+        public ActionResult Holiday()
+        {
+            return View();
+        }
+
+        public ActionResult StudentProfile()
+        {
+            return View();
+        }
+        public ActionResult StudentAttendanceProfile()
+        {
+            return View();
+        }
+
     }
 }

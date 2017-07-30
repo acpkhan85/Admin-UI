@@ -122,7 +122,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BackOfficeController.cs" />
     <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\CMSController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4423,9 +4425,19 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\NoticeBoard\Index.cshtml" />
     <Content Include="Views\Class\Division.cshtml" />
+    <Content Include="Views\Class\StudentSetUp.cshtml" />
+    <Content Include="Views\Class\ExamTimeTable.cshtml" />
+    <Content Include="Views\Class\TimeTable.cshtml" />
+    <Content Include="Views\Class\Holiday.cshtml" />
+    <Content Include="Views\CMS\Branding.cshtml" />
+    <Content Include="Views\CMS\Banner.cshtml" />
+    <Content Include="Views\BackOffice\Index.cshtml" />
+    <Content Include="Views\Class\StudentProfile.cshtml" />
+    <Content Include="Views\Class\StudentAttendanceProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,142 @@
+﻿ <div class="right_col" role="main" style="min-height: 1160px;">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Back Office</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content"> 
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_content">
+                                        <div class="x_title">
+                                            <h2>Back office <small></small></h2>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        <table id="datatable" class="table table-bordered" role="grid" aria-describedby="datatable_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th>Name</th>
+                                                    <th>Standard </th>
+                                                    <th> Requested Date</th>
+                                                    <th>Application </th>
+                                                    <th>Status </th>
+                                                    <th>Action</th>
+                                                    <th>Remark</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1">Shreedhar Deshwal</td>
+                                                    <td> 10-D</td>
+                                                    <td>10-Dec-2015</td>
+                                                    <td>I need bonfide for peronal reason</td>
+                                                    <td>In progress </td>
+                                                    <td>Please collect your document from 3rd floor office</td>
+                                                    <td>
+                                                        <i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                                                        &nbsp;<i title="edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                                                        &nbsp;<i title="edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel2">Add Division</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Name</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Name" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Standard</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Standard" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Requested Date</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Requested Date" readonly="readonly">
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Application</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <textarea class="form-control" rows="3" placeholder="Application"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Application</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <select class="select2_single form-control" tabindex="-1">
+                                <option> Status</option>
+                                <option value="AK">New</option>
+                                <option value="HI">In-Progress</option>
+                                <option value="CA">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Remark</label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <textarea class="form-control" rows="3" placeholder="Remark"></textarea>
+                        </div>
+                    </div>              
+                   
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-2">
+                            <button type="button" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $('#fromDate').datetimepicker({
+            format: 'DD.MM.YYYY',
+            ignoreReadonly: true,
+            allowInputToggle: true
+        });
+        $('#toDate').datetimepicker({
+            format: 'DD.MM.YYYY',
+            ignoreReadonly: true,
+            allowInputToggle: true
+        });
+    </script>
+}

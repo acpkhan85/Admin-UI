@@ -37,3 +37,43 @@ c:\users\shreedhar\documents\visual studio 2015\Projects\SmartSchool\SmartSchool
 c:\users\shreedhar\documents\visual studio 2015\Projects\SmartSchool\SmartSchool\bin\Newtonsoft.Json.xml
 c:\users\shreedhar\documents\visual studio 2015\Projects\SmartSchool\SmartSchool\obj\Debug\SmartSchool.dll
 c:\users\shreedhar\documents\visual studio 2015\Projects\SmartSchool\SmartSchool\obj\Debug\SmartSchool.pdb
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\csc.exe
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\vbc.exe
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\VBCSCompiler.exe
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\SmartSchool.dll.config
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\SmartSchool.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\SmartSchool.pdb
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Antlr3.Runtime.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Newtonsoft.Json.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Helpers.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Mvc.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Optimization.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Razor.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.WebPages.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.WebPages.Razor.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\WebGrease.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Helpers.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Mvc.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Optimization.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.Razor.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.WebPages.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\System.Web.WebPages.Razor.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Antlr3.Runtime.pdb
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\bin\Newtonsoft.Json.xml
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\obj\Debug\SmartSchool.csprojResolveAssemblyReference.cache
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\obj\Debug\SmartSchool.dll
+C:\Users\Shreedhar\Desktop\gitsmartschool\Admin\Admin-UI\SmartSchool\obj\Debug\SmartSchool.pdb
