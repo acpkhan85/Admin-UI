@@ -1,0 +1,103 @@
+﻿
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    .bg-p {
+        background-color: green;
+    }
+
+    .bg-a {
+        background-color: red;
+    }
+
+    .bg-i {
+        background-color: yellow;
+    }
+
+    .bg-g {
+        background-color: gray;
+    }
+
+    .circle {
+        /*border-radius: 50%;*/
+        width: 50%;
+        height: auto;
+        background: #ef8913;
+    }
+</style>
+
+<div class="right_col" role="main" style="min-height: 1160px;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_content">
+
+                <div class="table-responsive">
+
+                    <table id="datatable" class="table" role="grid" aria-describedby="datatable_info">
+
+                        <tr>
+                            @for (int j = 0; j < 31; j++)
+                            {
+                                <th>
+                                    @j.ToString()
+                                </th>}
+                        </tr>
+                        @for (int j = 0; j < 31; j++)
+                        {
+                            <tr>
+                                <td>
+                                    student name +@j.ToString()  24/30
+                                </td>
+                                @for (int i = 1; i < 31; i++)
+                                {
+                                    var idval = @j.ToString() + @i.ToString();
+                                    <td id=@idval> &nbsp; </td>
+                                }
+                            </tr>
+                        }
+
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+
+
+
+    // A $( document ).ready() block.
+    $(document).ready(function () {
+
+        var cars = ["bg-p", "bg-a", "bg-i", "bg-g"];
+        for (i = 0; i < 31; i++) {
+            for (j = 1; j < 31; j++) {
+                // console.log();
+                var idelement = i.toString() + j.toString();
+                // var randomNumber = Math.floor(Math.random() * cars.length);
+                console.log(idelement);
+                if (j % 7 === 0) {
+                    var randomNumber = "bg-g";
+                    $('#' + idelement).addClass("bg-g");
+                }
+
+                else {
+                    var randomNumber = "bg-p";
+                    $('#' + idelement).addClass(randomNumber);
+                }
+
+
+
+
+            }
+        }
+
+    });
+
+</script>
