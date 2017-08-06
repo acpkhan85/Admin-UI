@@ -18,5 +18,10 @@ namespace SmartSchool.Controllers
         {
             return View();
         }
+
+        public ActionResult TodayAttendance()
+        {
+            return View();
+        }
     }
 }

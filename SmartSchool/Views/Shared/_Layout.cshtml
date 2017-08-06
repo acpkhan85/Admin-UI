@@ -93,7 +93,7 @@
                                 <li>
                                     <a><i class="fa fa-calendar"></i> Attendance<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="/Events/Index">Todays Attendance</a></li>
+                                        <li><a href="/Attendance/TodayAttendance">Todays Attendance</a></li>
                                         <li><a href="/Attendance/Register">Attendance Register</a></li>                                        
                                     </ul>
                                 </li>
@@ -243,6 +243,7 @@
     </div>
     <!-- jQuery -->
     <script src="~/Content/plugins/jquery/dist/jquery.min.js"></script>
+  
     <!-- Bootstrap -->
     <script src="~/Content/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -289,6 +290,9 @@
     <script src="~/Content/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="~/Content/build/js/custom.min.js"></script>  
+    <script src="~/Content/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+ 
+
     @RenderSection("scripts", required: false)  
 </body>
 </html>

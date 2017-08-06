@@ -5,15 +5,15 @@
     }
 
     .bg-p {
-        background-color: green;
+        background-color: #169F85;
     }
 
     .bg-a {
-        background-color: red;
+        background-color: #d9534f;
     }
 
     .bg-i {
-        background-color: yellow;
+        background-color: #ffff00;
     }
 
     .bg-g {
@@ -40,15 +40,26 @@
                         <tr>
                             @for (int j = 0; j < 31; j++)
                             {
-                                <th>
-                                    @j.ToString()
-                                </th>}
+                                if (j <= 9)
+                                {
+                                    <th>
+                                    @string.Format("{0}{1}",0,j.ToString())
+                                    </th>
+                                }
+                                else
+                                {
+                                    <th>
+                                        @j.ToString()
+                                    </th>
+                                }
+                            }
                         </tr>
-                        @for (int j = 0; j < 31; j++)
+                      
+                        @for (int j = 0; j < 10; j++)
                         {
                             <tr>
                                 <td>
-                                    student name +@j.ToString()  24/30
+                                    student name  @j.ToString()  24/30
                                 </td>
                                 @for (int i = 1; i < 31; i++)
                                 {
@@ -57,7 +68,6 @@
                                 }
                             </tr>
                         }
-
 
                     </table>
                 </div>
@@ -75,26 +85,36 @@
     // A $( document ).ready() block.
     $(document).ready(function () {
 
-        var cars = ["bg-p", "bg-a", "bg-i", "bg-g"];
-        for (i = 0; i < 31; i++) {
-            for (j = 1; j < 31; j++) {
-                // console.log();
-                var idelement = i.toString() + j.toString();
-                // var randomNumber = Math.floor(Math.random() * cars.length);
-                console.log(idelement);
-                if (j % 7 === 0) {
-                    var randomNumber = "bg-g";
+                                var cars = ["bg-p", "bg-a", "bg-i", "bg-g"];
+                                for (i = 0; i < 31; i++) {
+                                    for (j = 1; j < 31; j++) {
+                                        // console.log();
+                                        var idelement = i.toString() + j.toString();
+                                        // var randomNumber = Math.floor(Math.random() * cars.length);
+                                        console.log(idelement);
+                                        if (j % 7 === 0) {
+                                            var randomNumber = "bg-g";
                     $('#' + idelement).addClass("bg-g");
-                }
+                                        }
 
-                else {
-                    var randomNumber = "bg-p";
+                                        else {
+                                            var randomNumber = "bg-p";
                     $('#' + idelement).addClass(randomNumber);
-                }
-            }
-        }
+                                        }
+                                    }
+                                }
 
-    });
+                                $('#65').addClass("bg-a");
+                                $('#812').addClass("bg-a");
+ 
+                                $('#95').addClass("bg-a");
+
+                                $('#019').addClass("bg-i");
+                                $('#823').addClass("bg-i");
+                                $('#824').addClass("bg-i");
+                                $('#325').addClass("bg-i");
+
+                            });
 
 </script>
 
