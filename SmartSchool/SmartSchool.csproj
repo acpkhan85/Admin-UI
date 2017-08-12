@@ -131,7 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NoticeBoardController.cs" />
-    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4438,7 +4438,7 @@
     <Content Include="Views\Class\StudentAttendanceProfile.cshtml" />
     <Content Include="Views\Attendance\Register.cshtml" />
     <Content Include="Views\Attendance\TodayAttendance.cshtml" />
-    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\About\Staff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

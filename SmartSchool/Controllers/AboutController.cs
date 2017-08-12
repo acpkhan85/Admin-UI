@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace SmartSchool.Controllers
 {
-    public class StaffController : Controller
+    public class AboutController : Controller
     {
         // GET: Staff
-        public ActionResult Index()
+        public ActionResult Staff()
         {
             return View();
         }
