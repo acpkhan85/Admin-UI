@@ -1309,6 +1309,8 @@
     <Content Include="Content\plugins\devbridge-autocomplete\index.htm" />
     <Content Include="Content\plugins\devbridge-autocomplete\license.txt" />
     <Content Include="Content\plugins\devbridge-autocomplete\src\jquery.autocomplete.js" />
+    <Content Include="Content\plugins\dropzone\css\basic.css" />
+    <Content Include="Content\plugins\dropzone\css\dropzone.css" />
     <Content Include="Content\plugins\dropzone\dist\basic.css" />
     <Content Include="Content\plugins\dropzone\dist\dropzone-amd-module.js" />
     <Content Include="Content\plugins\dropzone\dist\dropzone.css" />
@@ -1317,6 +1319,11 @@
     <Content Include="Content\plugins\dropzone\dist\min\dropzone-amd-module.min.js" />
     <Content Include="Content\plugins\dropzone\dist\min\dropzone.min.css" />
     <Content Include="Content\plugins\dropzone\dist\min\dropzone.min.js" />
+    <Content Include="Content\plugins\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Content\plugins\dropzone\dropzone.js" />
+    <Content Include="Content\plugins\dropzone\dropzone.min.js" />
+    <Content Include="Content\plugins\dropzone\images\spritemap%402x.png" />
+    <Content Include="Content\plugins\dropzone\images\spritemap.png" />
     <Content Include="Content\plugins\echarts\.gitignore" />
     <Content Include="Content\plugins\echarts\asset\logo.png" />
     <Content Include="Content\plugins\echarts\build\amd2common.js" />
@@ -4398,6 +4405,8 @@
     <Content Include="Content\plugins\validator\.bower.json" />
     <Content Include="Content\plugins\validator\README.md" />
     <Content Include="Content\plugins\validator\validator.jquery.json" />
+    <Content Include="Content\plugins\dropzone\css\stylus\basic.styl" />
+    <Content Include="Content\plugins\dropzone\css\stylus\dropzone.styl" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
