@@ -1,4 +1,6 @@
-﻿<div class="right_col" role="main" style="min-height: 1160px;">
+﻿@using Entity.SmartSchool
+@model Entity.SmartSchool.StudentDto
+<div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -93,6 +95,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -103,31 +106,36 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Division</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
+                @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+                {
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">First Name</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="First Name">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control col-md-7 col-xs-12", placeholder = "First Name" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "alert" })
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Middle Name</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Middle Name">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Middle Name" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.MiddleName, null, new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Last Name</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Last Name">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Last Name" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Parents Contact No</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Parents Contact No">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.ParentCellNumber, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Parents Contact No" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.ParentCellNumber, null, new { @class = "alert" })
                     </div>
 
                     <div class="ln_solid"></div>
@@ -137,7 +145,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
