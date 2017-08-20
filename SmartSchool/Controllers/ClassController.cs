@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Entity.SmartSchool;
 
 namespace SmartSchool.Controllers
 {
@@ -16,7 +17,30 @@ namespace SmartSchool.Controllers
 
         public ActionResult Division()
         {
-            return View();
+            ClassRoomDto c = new ClassRoomDto();
+
+
+            return View(c);
+        }
+
+        public ActionResult GetDivisions()
+        {
+            List<ClassRoomDto> classRooms = new List<ClassRoomDto>();
+            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "A", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "B", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "C", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "D", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+                                                                              
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "A", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "B", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "C", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "D", Actions= "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "A", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "B", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "C", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "D", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            return Json(new { data = classRooms }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult StudentSetUp()

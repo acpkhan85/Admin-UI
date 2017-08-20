@@ -12,6 +12,7 @@ namespace SmartSchool
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                 "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -24,8 +25,8 @@ namespace SmartSchool
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/plugins/bootstrap/dist/css/bootstrap.css",
+                      "~/Content/plugins/font-awesome/css/font-awesome.css").Include("~/Content/plugins/font-awesome/css/font-awesome.min.css", new CssRewriteUrlTransform()));
         }
     }
 }
