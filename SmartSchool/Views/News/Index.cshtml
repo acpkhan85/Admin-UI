@@ -1,4 +1,7 @@
-﻿<div class="right_col" role="main" style="min-height: 1160px;">
+﻿@using Entity.SmartSchool
+@model Entity.SmartSchool.NewsDto
+
+<div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -17,33 +20,34 @@
                         </div>
                         <div class="ln_solid"></div>
                         <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                   
-                                <div class="col-sm-12">
-                                    <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
-                                        <thead>
-                                            <tr role="row">
-                                                <th>Title</th>
-                                                <th>Description</th>
-                                                <th>Branches</th>                                                
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">School Concert</td>
-                                                <td >Lorem ipsum dolor sit amet, consectetuer adipiscing elitl
-                                                Donec quam feli...</td>                                              
-                                                <td>Dadar,Bandra</td>
-                                                <td><i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+
+                            <div class="col-sm-12">
+                                <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Branches</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">School Concert</td>
+                                            <td>
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elitl
+                                                Donec quam feli...
+                                            </td>
+                                            <td>Dadar,Bandra</td>
+                                            <td>
+                                                <i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
                                                 &nbsp;<i title="edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
                                                 &nbsp;<i title="edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                          
                         </div>
                     </div>
                 </div>
@@ -61,22 +65,25 @@
                 <h4 class="modal-title" id="myModalLabel2">Add News</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
+                @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+                {
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Title</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Title">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Header, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Title" })
                         </div>
-                    </div>    
-                    <div class="form-group">
+                        @Html.ValidationMessageFor(model => model.Header, "", new { @class = "alert" })
+                    </div>
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Image</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Upload Image">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Image, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Upload Image" })
                         </div>
-                    </div>             
-                    <div class="form-group">
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "alert" })
+                    </div>
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12">Select Branch</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <select class="select2_multiple form-control" multiple="multiple">
                                 <option>Choose option</option>
                                 <option>Option one</option>
@@ -88,11 +95,12 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Description</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <textarea class="form-control" rows="3" placeholder='Description'></textarea>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextAreaFor(model => model.NewsDescription, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Description", rows = "3" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "alert" })
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
@@ -101,7 +109,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
