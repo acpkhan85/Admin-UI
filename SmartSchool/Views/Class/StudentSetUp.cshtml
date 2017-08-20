@@ -60,31 +60,7 @@
                                             <div class="clearfix"></div>
                                         </div>
 
-                                        <table id="datatable" class="table table-bordered" role="grid" aria-describedby="datatable_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th>Roll No</th>
-                                                    <th>First Name </th>
-                                                    <th>Middle Name </th>
-                                                    <th>Last Name </th>
-                                                    <th>Actions </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">5</td>
-                                                    <td>Tejal</td>
-                                                    <td>Ganpat</td>
-                                                    <td>Satre</td>
-
-                                                    <td>
-                                                        <i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                        &nbsp;<i title="edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                        &nbsp;<i title="edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <table id="studentsTable" class="table table-bordered" role="grid" aria-describedby="datatable_info"></table>
                                     </div>
                                 </div>
                             </div>
@@ -150,3 +126,7 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+<script src="~/Scripts/CustomJs/ClassRoom.js"></script>
+}

@@ -20,59 +20,23 @@ namespace SmartSchool.Controllers
 
         public ActionResult Division()
         {
-            //Pagination paging = new Pagination();
-            //paging.PageNumber = 1;
-            //paging.PageSize= 10;
-            //paging.SchoolId = SmartSchoolHelper.SCHOOL_ID;
-            //paging.SortColumn = "Standard_Asc";
-
-            //int i = 0;
-            //List<ClassRoom> classRoomDto = new List<ClassRoom>();
-            //WCFProxy.Using((delegate (IClassSetupService client)
-            //{
-            //    classRoomDto = client.getStandardDivision(1,1,paging,out i);
-            //}));
             ClassRoomDto c = new ClassRoomDto();
-
-
             return View(c);
         }
        
         public JsonResult GetDivisions(DataTableAjaxPostModel model)
         {
-           
-            var start = model.start;
-            var length = model.length;
-
-            int pageNumber = (start + length) / length;
-
-            var sortColumn = model.columns[model.order[0].column].data;
-            var sortColumnDir = model.order[0].dir;
-
-            int pageSize = length != null ? Convert.ToInt32(length) : 0;
-            int skip = start != null ? Convert.ToInt32(start) : 0;
-
+            Pagination paginateModel = model.ToPagination();
             int recordsTotal = 0;
 
-            List<ClassRoomDto> classRooms = new List<ClassRoomDto>();
-            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "A", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "B", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "C", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "5th", Division = "D", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
+            ClassRoomCollection classRoomsCollection = new ClassRoomCollection();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                classRoomsCollection = client.getStandardDivision(null, null,1, paginateModel);
+            }));
 
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "A", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "B", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "C", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "D", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "A", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "B", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "C", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-            classRooms.Add(new ClassRoomDto { Standard = "6th", Division = "D", Actions = "<i title='view' class='fa fa-eye btn btn-dark' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-pencil btn btn-success' data-toggle='modal' data-target='.bs-example-modal-lg'></i><i title = 'edit' class='fa fa-close btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg'></i>" });
-
-            
-            recordsTotal = classRooms.Count();
-            var data = classRooms.Skip(skip).Take(pageSize).ToList();
+            recordsTotal = classRoomsCollection.TotalCount;
+            var data = classRoomsCollection.ClassRoom.Skip(paginateModel.Skip).Take(paginateModel.PageSize).ToList();
 
             return Json(new
             {
@@ -86,21 +50,118 @@ namespace SmartSchool.Controllers
 
         public ActionResult StudentSetUp()
         {
-            return View();
+            StudentDto d = new StudentDto();
+            return View(d);
+        }
+
+        public JsonResult GetStudents(DataTableAjaxPostModel model)
+        {
+            Pagination paginateModel = model.ToPagination();
+            int recordsTotal = 0;
+            StudentCollection studentCollection = new StudentCollection();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                studentCollection = client.getStudent(1, 1, paginateModel);
+            }));
+
+            recordsTotal = studentCollection.TotalCount;
+            var data = studentCollection.StudentList.Skip(paginateModel.Skip).Take(paginateModel.PageSize).ToList();
+
+            return Json(new
+            {
+                // this is what datatables wants sending back
+                draw = model.draw,
+                recordsTotal = recordsTotal,
+                recordsFiltered = recordsTotal,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ExamTimeTable()
         {
-            return View();
+            ExamTimeTableDto examTimeTableDto = new ExamTimeTableDto();
+            return View(examTimeTableDto);
+        }
+
+        public JsonResult GetExamTimetable(DataTableAjaxPostModel model)
+        {
+            Pagination paginateModel = model.ToPagination();
+            int recordsTotal = 0;
+            List<ExamTimeTableDto> examTimeTableList = new List<ExamTimeTableDto>();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                examTimeTableList = client.getExamTimeTable(1);
+            }));
+
+            recordsTotal = examTimeTableList.Count;
+            var data = examTimeTableList.Skip(paginateModel.Skip).Take(paginateModel.PageSize).ToList();
+
+            return Json(new
+            {
+                // this is what datatables wants sending back
+                draw = model.draw,
+                recordsTotal = recordsTotal,
+                recordsFiltered = recordsTotal,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult TimeTable()
         {
-            return View();
+            TimeTableDto timeTableDto = new TimeTableDto();
+            return View(timeTableDto);
         }
+
+        public JsonResult GetTimetable(DataTableAjaxPostModel model)
+        {
+            Pagination paginateModel = model.ToPagination();
+            int recordsTotal = 0;
+            List<TimeTableDto> timeTableList = new List<TimeTableDto>();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                timeTableList = client.getTimeTable(1);
+            }));
+
+            recordsTotal = timeTableList.Count();
+            var data = timeTableList.Skip(paginateModel.Skip).Take(paginateModel.PageSize).ToList();
+
+            return Json(new
+            {
+                // this is what datatables wants sending back
+                draw = model.draw,
+                recordsTotal = recordsTotal,
+                recordsFiltered = recordsTotal,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Holiday()
         {
-            return View();
+            HolidaysDto colidaysDto = new HolidaysDto();
+            return View(colidaysDto);
+        }
+
+        public JsonResult GetHolidays(DataTableAjaxPostModel model)
+        {
+            Pagination paginateModel = model.ToPagination();
+            int recordsTotal = 0;
+            List<HolidaysDto> holidaysList = new List<HolidaysDto>();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                holidaysList = client.getHolidayDetail(1);
+            }));
+
+            recordsTotal = holidaysList.Count();
+            var data = holidaysList.Skip(paginateModel.Skip).Take(paginateModel.PageSize).ToList();
+
+            return Json(new
+            {
+                // this is what datatables wants sending back
+                draw = model.draw,
+                recordsTotal = recordsTotal,
+                recordsFiltered = recordsTotal,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult StudentProfile()
