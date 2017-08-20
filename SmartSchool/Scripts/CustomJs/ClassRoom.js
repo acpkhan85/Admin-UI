@@ -23,14 +23,16 @@ function Submit() {
 $('#standards').dataTable({
     "ajax": {
         "url": "/Class/GetDivisions",
-        "type": "GET"
+        "type": "POST"
     }, "columns": [
-            { "data": "Standard" },
-            { "data": "Division" },
+            { "data": "Standard","name": "Standard" },
+            { "data": "Division","name": "Division" },
             { "data": "Actions", "orderable": false },
     ],
     "searching": false,
     "ordering": true,
     "order": [[0, "asc"]],
     "bLengthChange": false,
+    "proccessing": true,
+    "serverSide": true,
 });
