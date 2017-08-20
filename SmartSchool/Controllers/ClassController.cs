@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Contract.SmartSchool;
+using Entity.SmartSchool;
+using SmartSchool.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +19,18 @@ namespace SmartSchool.Controllers
 
         public ActionResult Division()
         {
+            //Pagination paging = new Pagination();
+            //paging.PageNumber = 1;
+            //paging.PageSize= 10;
+            //paging.SchoolId = SmartSchoolHelper.SCHOOL_ID;
+            //paging.SortColumn = "Standard_Asc";
+
+            //int i = 0;
+            //List<ClassRoom> classRoomDto = new List<ClassRoom>();
+            //WCFProxy.Using((delegate (IClassSetupService client)
+            //{
+            //    classRoomDto = client.getStandardDivision(1,1,paging,out i);
+            //}));
             return View();
         }
 
