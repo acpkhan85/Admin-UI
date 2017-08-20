@@ -44,6 +44,8 @@ namespace SmartSchool.Controllers
             var start = model.start;
             var length = model.length;
 
+            int pageNumber = (start + length) / length;
+
             var sortColumn = model.columns[model.order[0].column].data;
             var sortColumnDir = model.order[0].dir;
 
