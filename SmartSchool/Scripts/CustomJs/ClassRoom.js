@@ -20,21 +20,20 @@ function Submit() {
 
 }
 
-$('#standards').dataTable({
+$("#standards").dataTable({
     "ajax": {
         "url": "/Class/GetDivisions",
         "type": "POST"
     }, "columns": [
             { "data": "Standard","name": "Standard" },
             { "data": "Division","name": "Division" },
-            { "data": "Actions", "orderable": false },
-          
-    ], 
-    "fnRender": function (data) {
-                                    
-        return "<input type='button' value='Detail' class='reciveDetailOffer' data-details='userid=" + data[0] + "&offerid=" + data[1] + "' Title='View Details'>";
-                                    
-    },
+            {
+                "data": "Actions", "orderable": false, "render": function (data, type, full, meta) {
+                    return '<i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i><i title = "edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i><i title = "edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>'
+                    
+                }
+            },
+          ], 
     "searching": false,
     "ordering": true,
     "order": [[0, "asc"]],
@@ -42,8 +41,3 @@ $('#standards').dataTable({
     "proccessing": true,
     "serverSide": true,
 });
-
-//{
-//    bSortable: false,
-//    mRender: function (o) { return '<i class="ui-tooltip fa fa-pencil" style="font-size: 22px;" data-original-title="Edit"></i><i class="ui-tooltip fa fa-trash-o" style="font-size: 22px;" data-original-title="Delete"></i>'; }
-//}
