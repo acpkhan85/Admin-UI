@@ -1,4 +1,7 @@
-﻿<div class="right_col" role="main" style="min-height: 1160px;">
+﻿@using Entity.SmartSchool
+@model Entity.SmartSchool.TimeTableDto
+
+<div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -99,71 +102,81 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Exam Time Table</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
+               @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+               {
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">From Time</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="fromTime">
-                                <input type="text" class="form-control" placeholder="From Date" readonly="readonly">
+                                @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control", placeholder = "From Time", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">To Time</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="toTime">
-                                <input type="text" class="form-control" placeholder="To Time" readonly="readonly">
+                                @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control", placeholder = "To Time", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Mon</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Mon">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Mon, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Mon" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Mon, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Tue</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Tue">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Tue, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Tue" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Tue, "", new { @class = "alert" })
                     </div>
-          
-                    <div class="form-group">
+
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Wed</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Wed">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Wed, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Wed" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Wed, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Thu</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Thu">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Thu, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Thu" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Thu, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Fri</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Fri">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Fri, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Fri" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Fri, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Sat</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Sat">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Sat, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Sat" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Sat, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Sun</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Sun">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Sun, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Sun" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Sun, "", new { @class = "alert" })
                     </div>
 
                     <div class="ln_solid"></div>
@@ -173,7 +186,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </form>
+               }
             </div>
         </div>
     </div>

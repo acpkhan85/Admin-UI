@@ -32,6 +32,12 @@
     <!-- Custom Theme Style -->
     <link href="~/Content/build/css/custom.min.css" rel="stylesheet">
     <link href="~/Content/plugins/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .item .field-validation-error {
+            left: 0;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -298,7 +304,9 @@
     <!-- Custom Theme Scripts -->
     <script src="~/Content/build/js/custom.min.js"></script>  
     <script src="~/Content/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
- 
+    <!-- Validation script -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     @RenderSection("scripts", required: false)  
 </body>

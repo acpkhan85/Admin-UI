@@ -1,4 +1,7 @@
-﻿<div class="right_col" role="main" style="min-height: 939px;">
+﻿@using Entity.SmartSchool
+@model Entity.SmartSchool.StaffDto
+
+<div class="right_col" role="main" style="min-height: 939px;">
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -135,8 +138,6 @@
 </div>
 
 
-
-
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -147,40 +148,49 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Division</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
+                @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+                {
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Position</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Position">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Designation, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Position" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Full Name</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Name">
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">First Name</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control col-md-7 col-xs-12", placeholder = "First Name" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Address</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            @*<input type="textare" class="form-control" placeholder="Address">*@
-                            <textarea class="form-control"></textarea>
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Middle Name</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Middle Name" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Last Name</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Last Name" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "alert" })
+                    </div>
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Phone</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            @*<input type="textare" class="form-control" placeholder="Address">*@
-                            <input type="text" class="form-control" placeholder="Phone">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Phone" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "alert" })
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-1 col-xs-12">About</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            @*<input type="textare" class="form-control" placeholder="Address">*@
-                            <textarea class="form-control"></textarea>
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Address</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextAreaFor(model => model.Address, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Address" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "alert" })
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
@@ -189,7 +199,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>

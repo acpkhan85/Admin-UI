@@ -1,4 +1,7 @@
-﻿<div class="right_col" role="main" style="min-height: 1160px;">
+﻿@using Entity.SmartSchool
+@model Entity.SmartSchool.ExamTimeTableDto
+
+<div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -97,57 +100,57 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Exam Time Table</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
+                @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+                {
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Subject</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Title">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Title" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Date</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Location">
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Location</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Location, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Location" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12">From Time</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Location">
-                        </div>
-                    </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Date</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="fromDate">
-                                <input type="text" class="form-control" placeholder="Date" readonly="readonly">
+                                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Date", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">From Time</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="fromTime">
-                                <input type="text" class="form-control" placeholder="From Date" readonly="readonly">
+                                @Html.TextBoxFor(model => model.FromTime, new { @class = "form-control col-md-7 col-xs-12", placeholder = "From Time", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.FromTime, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">To Time</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="toTime">
-                                <input type="text" class="form-control" placeholder="To Time" readonly="readonly">
+                                @Html.TextBoxFor(model => model.ToTime, new { @class = "form-control col-md-7 col-xs-12", placeholder = "To Time", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.ToTime, "", new { @class = "alert" })
                     </div>
 
                     <div class="ln_solid"></div>
@@ -157,11 +160,12 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
 </div>
+
 @section scripts{
     <script>
   

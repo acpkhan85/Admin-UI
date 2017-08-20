@@ -1,4 +1,7 @@
-﻿<div class="right_col" role="main" style="min-height: 1160px;">
+﻿@using Entity.SmartSchool
+@model Entity.SmartSchool.HolidaysDto
+
+<div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -68,34 +71,38 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Division</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal form-label-left">
-                    <div class="form-group">
+                @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+                {
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">From Date</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="fromDate">
-                                <input type="text" class="form-control" placeholder="From Date" readonly="readonly">
+                                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", placeholder = "From Date", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">To Date</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group date" id="toDate">
-                                <input type="text" class="form-control" placeholder="To Date" readonly="readonly">
+                                @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control", placeholder = "To Date", @readonly = "readonly" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
+                        @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "alert" })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">Holiday</label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Holiday">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Festival, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Holiday" })
                         </div>
+                        @Html.ValidationMessageFor(model => model.Festival, "", new { @class = "alert" })
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
@@ -104,7 +111,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
