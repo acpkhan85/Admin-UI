@@ -20,15 +20,20 @@ function Submit() {
 
 }
 
-$('#standards').dataTable({
+$("#standards").dataTable({
     "ajax": {
         "url": "/Class/GetDivisions",
         "type": "POST"
     }, "columns": [
             { "data": "Standard","name": "Standard" },
             { "data": "Division","name": "Division" },
-            { "data": "Actions", "orderable": false },
-    ],
+            {
+                "data": "Actions", "orderable": false, "render": function (data, type, full, meta) {
+                    return '<i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i><i title = "edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i><i title = "edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>'
+                    
+                }
+            },
+          ], 
     "searching": false,
     "ordering": true,
     "order": [[0, "asc"]],
