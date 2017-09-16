@@ -49,7 +49,8 @@
     <Reference Include="Contract.SmartSchool">
       <HintPath>..\..\GaurangService\Contract.SmartSchool\bin\Debug\Contract.SmartSchool.dll</HintPath>
     </Reference>
-    <Reference Include="Entity.SmartSchool">
+    <Reference Include="Entity.SmartSchool, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\GaurangService\Entity.SmartSchool\bin\Debug\Entity.SmartSchool.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -4415,6 +4416,7 @@
     <Content Include="Content\plugins\dropzone\css\stylus\basic.styl" />
     <Content Include="Content\plugins\dropzone\css\stylus\dropzone.styl" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\CustomJs\ClassRoom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
