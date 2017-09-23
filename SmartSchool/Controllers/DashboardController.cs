@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Contract.SmartSchool;
+using Entity.SmartSchool;
+using SmartSchool.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +14,12 @@ namespace SmartSchool.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
-            return View();
+            DashboardDto dashboard = new DashboardDto();
+            WCFProxy.Using((delegate (IDashboardService client)
+            {
+                dashboard = client.getDashboard();
+            }));
+            return View(dashboard);
         }
     }
 }
