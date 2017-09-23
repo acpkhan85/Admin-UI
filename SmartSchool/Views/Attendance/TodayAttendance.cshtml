@@ -1,9 +1,21 @@
-﻿@{
-
+﻿@using Entity.SmartSchool
+@model List<ClassAttendanceDto>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
+<style>
+    .attendance-present {
+        background-color: #169F85;
+    }
 
+    .attendance-absent {
+        background-color: #d9534f;
+    }
+
+    .attendance-infromed {
+        background-color: #ec971f;
+    }
+</style>
 
 
 <div class="right_col" role="main" style="min-height: 1160px;">
@@ -36,84 +48,59 @@
         </div>
         <div class="form-group col-md-4 col-sm-4 col-xs-12">
             <div class="col-md-8 col-sm-8 col-xs-12">
-                <button type="button" class="btn btn-sm btn-primary">&nbsp;Submit</button>
+                <button type="button" onclick="SubmitAttendance()" class="btn btn-sm btn-primary">&nbsp;Submit</button>
             </div>
         </div>
-    </form>
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_content">
 
-                <div class="table-responsive">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_content">
 
-                    <table id="example" class="table" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th width="2%" ></th>
-                                <th width="10%">Photo</th>
-                                <th width="80%">Name</th>
-                                <th>Attendance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="table-responsive">
 
-                            <tr>
-                                <td style="background-color:#d9534f"></td>
-                                <td>
-                                    <img src="~/images/img.jpg" />
-                                </td>
+                        <table id="ClassAttendanceTable" class="table" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th width="2%"></th>
+                                    <th width="10%">Photo</th>
+                                    <th width="80%">Name</th>
+                                    <th>Attendance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                                <td>
-                                    @string.Format("{0},{1}", "1", "Shreedhar Deshwal")
-                                </td>
+                                @*<tr>
+                                        <td style="background-color:#d9534f"></td>
+                                        <td><img src="~/images/img.jpg" /></td>
+                                        <td>@string.Format("{0},{1}", "1", "Shreedhar Deshwal")</td>
+                                        <td><button type="button" class="btn btn-danger">Absent</button></td>
+                                    </tr>*@
 
-                                <td>
-                                    <button type="button" class="btn btn-danger">Absent</button>
-                                </td>
-                            </tr>
+                                @foreach (var item in Model)
+                                {
+                                    string attendanceClass = string.Empty, attendanceClassBtn = string.Empty,btnText = string.Empty, onclick = string.Empty;
+                                    switch (item.Attendence)
+                                    {
+                                        case 1: attendanceClass = "attendance-present"; attendanceClassBtn = "btn btn-success"; btnText = "Present"; onclick= "ChangeAttendance(this);"; break;
+                                        case 2: attendanceClass = "attendance-absent"; attendanceClassBtn = "btn btn-danger"; btnText = "Absent"; onclick = "ChangeAttendance(this);"; break;
+                                        case 3: attendanceClass = "attendance-infromed"; attendanceClassBtn = "btn btn-warning"; btnText = "Informed"; break;
+                                    }
 
-                            <tr>
-                                <td style="background-color:#ec971f"></td>
-                                <td>
-                                    <img src="~/images/img.jpg" />
-                                </td>
-
-                                <td>
-                                    @string.Format("{0},{1}", "2", "Shreedhar Deshwal")
-                                </td>
-
-                                <td>
-                                    <button type="button" class="btn btn-warning">Informed</button>
-                                </td>
-                            </tr>
-
-                            @for (int i =2; i < 50; i++)
-                            {
-                                    <tr>
-                                        <td style="background-color:#169F85"></td>
-                                        <td>
-                                            <img src="~/images/img.jpg" />
-                                        </td>
-
-                                        <td>
-                                            @string.Format("{0},{1}", i.ToString(), "Shreedhar Deshwal")
-                                        </td>
-
-                                        <td>
-                                            <button type="button" class="btn btn-success">Present</button>
-                                        </td>
-                                    </tr>
+                                <tr class="student-information" data-studentid="@item.StudentId" data-attendeance="@item.Attendence">
+                                    <td class="@attendanceClass"></td>
+                                    <td><img src="@item.StudentImageURL" /></td>
+                                    <td>@string.Format("{0},{1}", item.StudentId, item.FullName)</td>
+                                    <td><button type="button" class="@attendanceClassBtn" onclick="@onclick">@btnText</button></td>
+                                </tr>
                             }
-
-
-
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script>
@@ -132,4 +119,42 @@
         });
 
     });
+
+    function SubmitAttendance() {
+        var attendanceList = [];
+        
+        $(".student-information").each(function (index, element) {
+            var tr = $(element);
+            attendanceList.push({ StudentId: tr.data("studentid"), Attendence: Number(tr.data("attendeance")) });
+        });
+
+        $.ajax({
+            method: "POST",
+            async: false,
+            url: "/Attendance/SubmitAttendance",
+            data: { classAttendance: attendanceList },
+            success: function (data) {
+                if (data == true) {
+                    alert("Attendance saved");
+                }
+            }
+        });
+    }
+
+    function ChangeAttendance(current) {
+        var $this = $(current);
+        var tr = $this.closest("tr");
+        if ($this.hasClass("btn-success")) {
+            $this.removeClass("btn-success").addClass("btn-danger");
+            $this.text("Absent");
+            tr.children().first().removeClass("attendance-present").addClass("attendance-absent");
+            tr.data("attendeance", "2");
+        }
+        else {
+            $this.removeClass("btn-danger").addClass("btn-success");
+            $this.text("Present");
+            tr.children().first().removeClass("attendance-absent").addClass("attendance-present");
+            tr.data("attendeance", "1");
+        }
+    }
 </script>

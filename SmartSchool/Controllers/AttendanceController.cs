@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Contract.SmartSchool;
+using Entity.SmartSchool;
+using SmartSchool.Helper;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SmartSchool.Controllers
@@ -21,7 +21,18 @@ namespace SmartSchool.Controllers
 
         public ActionResult TodayAttendance()
         {
-            return View();
+            List<ClassAttendanceDto> classAttendance = new List<ClassAttendanceDto>();
+            WCFProxy.Using((delegate (IAttendanceService client)
+            {
+                classAttendance = client.getClassAttendence(0, 0);
+            }));
+
+            return View(classAttendance);
+        }
+
+        public ActionResult SubmitAttendance(List<ClassAttendanceDto> classAttendance)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

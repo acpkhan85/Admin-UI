@@ -64,6 +64,9 @@ namespace SmartSchool.Helper
                 case "IDashboardService":
                     serviceTypeName = "http://localhost:17219/DashboardService.svc";
                     break;
+                case "IAttendanceService":
+                    serviceTypeName = "http://localhost:17219/AttendanceService.svc";
+                    break;
             }
 
             return serviceTypeName;
