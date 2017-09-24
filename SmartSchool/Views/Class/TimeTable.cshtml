@@ -73,7 +73,7 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Exam Time Table</h4>
             </div>
             <div class="modal-body">
-               @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+               @using (Ajax.BeginForm("SubmitTimeTable", "Class", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowAlert" }, new { @class = "form-horizontal form-label-left" }))
                {
                     <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">From Time</label>

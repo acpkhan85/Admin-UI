@@ -173,5 +173,29 @@ namespace SmartSchool.Controllers
             return View();
         }
 
+        public ActionResult SubmitDivision(ClassRoomDto divisions)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SubmitStudent(StudentDto student)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SubmitTimeTable(TimeTableDto timeTable)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SubmitExamTimeTable(ExamTimeTableDto examTimeTable)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SubmitHoliday(HolidaysDto holiday)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
     }
 }
