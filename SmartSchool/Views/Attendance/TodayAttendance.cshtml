@@ -79,21 +79,21 @@
 
                                 @foreach (var item in Model)
                                 {
-                                    string attendanceClass = string.Empty, attendanceClassBtn = string.Empty,btnText = string.Empty, onclick = string.Empty;
+                                    string attendanceClass = string.Empty, attendanceClassBtn = string.Empty, btnText = string.Empty;
                                     switch (item.Attendence)
                                     {
-                                        case 1: attendanceClass = "attendance-present"; attendanceClassBtn = "btn btn-success"; btnText = "Present"; onclick= "ChangeAttendance(this);"; break;
-                                        case 2: attendanceClass = "attendance-absent"; attendanceClassBtn = "btn btn-danger"; btnText = "Absent"; onclick = "ChangeAttendance(this);"; break;
+                                        case 1: attendanceClass = "attendance-present"; attendanceClassBtn = "btn btn-success"; btnText = "Present"; break;
+                                        case 2: attendanceClass = "attendance-absent"; attendanceClassBtn = "btn btn-danger"; btnText = "Absent"; break;
                                         case 3: attendanceClass = "attendance-infromed"; attendanceClassBtn = "btn btn-warning"; btnText = "Informed"; break;
                                     }
 
-                                <tr class="student-information" data-studentid="@item.StudentId" data-attendeance="@item.Attendence">
-                                    <td class="@attendanceClass"></td>
-                                    <td><img src="@item.StudentImageURL" /></td>
-                                    <td>@string.Format("{0},{1}", item.StudentId, item.FullName)</td>
-                                    <td><button type="button" class="@attendanceClassBtn" onclick="@onclick">@btnText</button></td>
-                                </tr>
-                            }
+                                    <tr class="student-information" data-studentid="@item.StudentId" data-attendeance="@item.Attendence">
+                                        <td class="@attendanceClass"></td>
+                                        <td><img src="@item.StudentImageURL" /></td>
+                                        <td>@string.Format("{0},{1}", item.StudentId, item.FullName)</td>
+                                        <td><button type="button" class="@attendanceClassBtn" onclick="ChangeAttendance(this);">@btnText</button></td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -122,7 +122,7 @@
 
     function SubmitAttendance() {
         var attendanceList = [];
-        
+
         $(".student-information").each(function (index, element) {
             var tr = $(element);
             attendanceList.push({ StudentId: tr.data("studentid"), Attendence: Number(tr.data("attendeance")) });
@@ -144,17 +144,15 @@
     function ChangeAttendance(current) {
         var $this = $(current);
         var tr = $this.closest("tr");
-        if ($this.hasClass("btn-success")) {
-            $this.removeClass("btn-success").addClass("btn-danger");
-            $this.text("Absent");
-            tr.children().first().removeClass("attendance-present").addClass("attendance-absent");
-            tr.data("attendeance", "2");
-        }
-        else {
-            $this.removeClass("btn-danger").addClass("btn-success");
-            $this.text("Present");
-            tr.children().first().removeClass("attendance-absent").addClass("attendance-present");
-            tr.data("attendeance", "1");
+        var attendenceFlag = Number(tr.data("attendeance"));
+
+        $this.removeClass("btn-success").removeClass("btn-danger").removeClass("btn-warning");
+        tr.children().first().removeClass("attendance-present").removeClass("attendance-absent").removeClass("attendance-infromed");
+
+        switch(attendenceFlag){
+            case 1: tr.data("attendeance", "2"); tr.children().first().addClass("attendance-absent"); $this.addClass("btn-danger"); $this.text("Absent"); break;
+            case 2: tr.data("attendeance", "3"); tr.children().first().addClass("attendance-infromed"); $this.addClass("btn-warning"); $this.text("Informed"); break;
+            case 3: tr.data("attendeance", "1"); tr.children().first().addClass("attendance-present"); $this.addClass("btn-success"); $this.text("Present"); break;
         }
     }
 </script>
