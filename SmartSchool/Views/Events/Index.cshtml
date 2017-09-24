@@ -1,6 +1,7 @@
 ﻿@using Entity.SmartSchool
 @model Entity.SmartSchool.EventsDto
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
@@ -67,7 +68,7 @@
                 <h4 class="modal-title" id="myModalLabel2">Add Event</h4>
             </div>
             <div class="modal-body">
-                @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "POST" }, new { @class = "form-horizontal form-label-left" }))
+                @using (Ajax.BeginForm("SubmitEvent", "Events",null, new AjaxOptions { HttpMethod = "POST", OnSuccess="ShowAlert" }, new { @class = "form-horizontal form-label-left" }))
                 {
                     <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Title</label>
@@ -137,5 +138,10 @@
             ignoreReadonly: true,
             allowInputToggle: true
         });
+
+        function ShowAlert(data) {
+            debugger
+            alert(data);
+        }
     </script>
 }
