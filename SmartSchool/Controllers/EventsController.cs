@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 //using Contract.SmartSchool;
 using SmartSchool.Helper;
+using Entity.SmartSchool;
 
 namespace SmartSchool.Controllers
 {
@@ -19,6 +20,11 @@ namespace SmartSchool.Controllers
             //}));
 
             return View();
+        }
+
+        public ActionResult SubmitEvent(EventsDto eventDto)
+        {
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }
