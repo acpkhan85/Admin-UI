@@ -20,6 +20,7 @@ namespace SmartSchool.Controllers
 
         public ActionResult Division()
         {
+            ViewBag.SchoolId = 1;
             ClassRoomDto c = new ClassRoomDto();
             return View(c);
         }
@@ -50,6 +51,14 @@ namespace SmartSchool.Controllers
 
         public ActionResult StudentSetUp()
         {
+            Pagination paginateModel = new Pagination() { PageNumber = 1, PageSize = 500, Skip = 0, SortColumn ="", TotalCount = 0};
+            ClassRoomCollection classRoomsCollection = new ClassRoomCollection();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                classRoomsCollection = client.getStandardDivision(null, null, 1, paginateModel);
+            }));
+            ViewBag.SchoolId = 1;
+            ViewBag.ClassList = classRoomsCollection.ClassRoom;
             StudentDto d = new StudentDto();
             return View(d);
         }
@@ -79,6 +88,14 @@ namespace SmartSchool.Controllers
 
         public ActionResult ExamTimeTable()
         {
+            Pagination paginateModel = new Pagination() { PageNumber = 1, PageSize = 500, Skip = 0, SortColumn = "", TotalCount = 0 };
+            ClassRoomCollection classRoomsCollection = new ClassRoomCollection();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                classRoomsCollection = client.getStandardDivision(null, null, 1, paginateModel);
+            }));
+            ViewBag.SchoolId = 1;
+            ViewBag.ClassList = classRoomsCollection.ClassRoom;
             ExamTimeTableDto examTimeTableDto = new ExamTimeTableDto();
             return View(examTimeTableDto);
         }
@@ -108,6 +125,14 @@ namespace SmartSchool.Controllers
 
         public ActionResult TimeTable()
         {
+            Pagination paginateModel = new Pagination() { PageNumber = 1, PageSize = 500, Skip = 0, SortColumn = "", TotalCount = 0 };
+            ClassRoomCollection classRoomsCollection = new ClassRoomCollection();
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                classRoomsCollection = client.getStandardDivision(null, null, 1, paginateModel);
+            }));
+            ViewBag.SchoolId = 1;
+            ViewBag.ClassList = classRoomsCollection.ClassRoom;
             TimeTableDto timeTableDto = new TimeTableDto();
             return View(timeTableDto);
         }
@@ -137,6 +162,7 @@ namespace SmartSchool.Controllers
 
         public ActionResult Holiday()
         {
+            ViewBag.SchoolId = 1;
             HolidaysDto colidaysDto = new HolidaysDto();
             return View(colidaysDto);
         }
@@ -175,27 +201,62 @@ namespace SmartSchool.Controllers
 
         public ActionResult SubmitDivision(ClassRoomDto divisions)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                message = client.addUpdateStandrdDivision(divisions);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SubmitStudent(StudentDto student)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                message = client.addUpdateStudentDetail(student);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SubmitTimeTable(TimeTableDto timeTable)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                message = client.addUpdateTimeTable(timeTable);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SubmitExamTimeTable(ExamTimeTableDto examTimeTable)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                message = client.addUpdateExamTimeTable(examTimeTable);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SubmitHoliday(HolidaysDto holiday)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+
+            WCFProxy.Using((delegate (IClassSetupService client)
+            {
+                message = client.addUpdateHolidayDetail(holiday);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
     }
 }

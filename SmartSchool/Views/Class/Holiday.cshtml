@@ -73,6 +73,8 @@
             <div class="modal-body">
                 @using (Ajax.BeginForm("SubmitHoliday", "Class", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowAlert" }, new { @class = "form-horizontal form-label-left" }))
                 {
+                    @Html.Hidden("SchoolId", (int)ViewBag.SchoolId)
+
                     <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12">From Date</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -103,6 +105,13 @@
                             @Html.TextBoxFor(model => model.Festival, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Holiday" })
                         </div>
                         @Html.ValidationMessageFor(model => model.Festival, "", new { @class = "alert" })
+                    </div>
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12">Notes</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextAreaFor(model => model.Notes, new { @class = "form-control col-md-7 col-xs-12", placeholder = "Holiday" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "alert" })
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">

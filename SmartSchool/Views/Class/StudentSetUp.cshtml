@@ -1,5 +1,9 @@
 ﻿@using Entity.SmartSchool
 @model Entity.SmartSchool.StudentDto
+@{
+    List<ClassRoomDto> classList = (List<ClassRoomDto>)ViewBag.ClassList;
+    SelectList classSelectList = new SelectList(classList.ToDictionary(k => k.ClassId, v => "Std - "+ v.Standard + " | Div - " + v.Division), "Key", "Value");
+}
 <div class="right_col" role="main" style="min-height: 1160px;">
     <div class="">
         <div class="page-title">
@@ -32,15 +36,7 @@
                             <div class="form-group col-sm-4 col-xs-12">
                                 <label class="control-label col-md-2 col-sm-2 col-xs-12">Class</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <select class="form-control">
-                                        <option>Choose class</option>
-                                        <option>Class V</option>
-                                        <option>Class VI</option>
-                                        <option>Class VII</option>
-                                        <option>Class VIII</option>
-                                        <option>Class IX</option>
-                                        <option>Class X</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.ClassId, classSelectList, "Select", new { @class = "form-control col-md-7 col-xs-12", placeholder = "First Name" })
                                 </div>
                             </div>
                             <div class="form-group col-md-4 col-sm-4 col-xs-12">
@@ -56,7 +52,7 @@
                                     <div class="x_content">
                                         <div class="x_title">
                                             <h2>Students <small>Students subtitle</small></h2>
-                                         
+
                                             <div class="clearfix"></div>
                                         </div>
 
@@ -84,6 +80,16 @@
             <div class="modal-body">
                 @using (Ajax.BeginForm("SubmitStudent", "Class", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowAlert" }, new { @class = "form-horizontal form-label-left" }))
                 {
+                    @Html.Hidden("SchoolId", (int)ViewBag.SchoolId)
+
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Class</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownListFor(model => model.ClassId, classSelectList, "Select", new { @class = "form-control col-md-7 col-xs-12", placeholder = "First Name" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ClassId, null, new { @class = "alert" })
+                    </div>
+
                     <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">First Name</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -106,6 +112,15 @@
                         </div>
                         @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "alert" })
                     </div>
+
+                    <div class="form-group item">
+                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Blood Group</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.BloodGroup, new { @class = "form-control col-md-7 col-xs-12", placeholder = "First Name" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.BloodGroup, null, new { @class = "alert" })
+                    </div>
+
                     <div class="form-group item">
                         <label class="control-label col-md-2 col-sm-1 col-xs-12">Parents Contact No</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -128,5 +143,5 @@
 </div>
 
 @section scripts{
-<script src="~/Scripts/CustomJs/ClassRoom.js"></script>
+    <script src="~/Scripts/CustomJs/ClassRoom.js"></script>
 }

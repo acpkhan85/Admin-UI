@@ -30,9 +30,9 @@ $("#NewsTable").dataTable({
     },
     "columns": [
             { "data": "Header", "name": "Title" },
-            { "data": "Location", "name": "Location" },
-            { "data": "StartDate", "name": "From Date" },
-            { "data": "EndDate", "name": "To Date" },
+            { "data": "NewsDescription", "name": "Location" },
+            { "data": "Image", "name": "From Date" },
+            //{ "data": "EndDate", "name": "To Date" },
             {
                 "data": "Actions", "orderable": false, "render": function (data, type, full, meta) {
                     return '<i title="view" class="fa fa-eye btn btn-dark" data-toggle="modal" data-target=".bs-example-modal-lg"></i><i title = "edit" class="fa fa-pencil btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"></i><i title = "edit" class="fa fa-close btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-lg"></i>'

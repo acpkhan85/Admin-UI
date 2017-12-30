@@ -15,6 +15,7 @@ namespace SmartSchool.Controllers
         // GET: Events
         public ActionResult Index()
         {
+            ViewBag.SchoolId = 1;
             //WCFProxy.Using((delegate (IClassSetupService client)
             //{
             //    var resulrt = client.getExamTimeTable(1);
@@ -25,7 +26,14 @@ namespace SmartSchool.Controllers
 
         public ActionResult SubmitEvent(EventsDto eventDto)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+            
+            WCFProxy.Using((delegate (IEventsAndNewsService client)
+            {
+                message = client.addUpdateEvents(eventDto);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetEvents(DataTableAjaxPostModel model)

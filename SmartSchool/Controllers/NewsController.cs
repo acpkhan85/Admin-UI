@@ -14,12 +14,20 @@ namespace SmartSchool.Controllers
         // GET: News
         public ActionResult Index()
         {
+            ViewBag.SchoolId = 1;
             return View();
         }
 
         public ActionResult SubmitNews(NewsDto newsDto)
         {
-            return Json(true, JsonRequestBehavior.AllowGet);
+            MessageDTO message = new MessageDTO();
+
+            WCFProxy.Using((delegate (IEventsAndNewsService client)
+            {
+                message = client.addUpdateNews(newsDto);
+            }));
+
+            return Json(message.message, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetNews(DataTableAjaxPostModel model)

@@ -312,12 +312,10 @@
     @RenderSection("scripts", required: false)  
     <script>
         function ShowAlert(data) {
-            debugger
+            $('.modal').hide();
+            $('.modal-backdrop').removeClass('in');
             alert(data);
         }
     </script>
 </body>
 </html>
-
-
-
