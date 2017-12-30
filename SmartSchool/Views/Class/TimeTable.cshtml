@@ -190,15 +190,16 @@
                 <h4 class="modal-title" id="myModalLabel2">Upload Excel Sheet for Time Table</h4>
             </div>
             <div class="modal-body">
-                @using (Ajax.BeginForm("SubmitTimeTable", "Class", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowAlert" }, new { @class = "form-horizontal form-label-left" }))
-                {
-                    <div class="form-group item">
-                        <label class="control-label col-md-2 col-sm-1 col-xs-12">Time table</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="fileSelect" class="form-control" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
-                        </div>
-                    </div>
-                }
+                <div id="divUploadFileAdd">
+                    <form enctype="multipart/form-data" id="frmUplaodFileAdd">
+
+                        @Html.AntiForgeryToken()
+                        <input id="fuPDFAdd" name="file" type="file" />
+                        <input class="gbtn" id="btnUploadAdd" type="button" value="Upload" />
+                        <label id="txtuploadedMsgAdd"> </label>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -206,7 +207,6 @@
 
 @section scripts{
     <script>
-
 
         $('#fromTime').datetimepicker({
             format: 'hh:mm A',
@@ -218,6 +218,54 @@
             ignoreReadonly: true,
             allowInputToggle: true
         });
+
+
+        $("#fuPDFAdd").change(function () {
+            var file = this.files[0];
+            fileName = file.name;
+            size = file.size;
+            type = file.type;
+            if (type.toLowerCase() == "application/pdf") { //I just want pdf files and only want to show
+                //upload button if it is of my desired type
+                $("#txtuploadedMsgAdd").text("");
+                $("#btnUploadAdd").show();
+            }
+            else {
+                $("#txtuploadedMsgAdd").text("Error: Please select pdf file.");
+                $("#btnUploadAdd").hide();
+                $("#divAddInforamtionDialog").hide();
+            }
+        });
+
+        $("#btnUploadAdd").click(function () {
+
+            var formData = new FormData($('#frmUplaodFileAdd')[0]);
+            $.ajax({
+                url: '/class/AsynFileUpload',  //Server script to process data
+                type: 'POST',
+                xhr: function () {  // Custom XMLHttpRequest
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) { // Check if upload property exists
+                        myXhr.upload.addEventListener('progress',
+                        progressHandlingFunction, false); // For handling the progress of the upload
+                    }
+                    return myXhr;
+                },
+                data: formData,
+                //Options to tell jQuery not to process data or worry about content-type.
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+
+        //If file is successfully uploaded, label is updated with message
+        function progressHandlingFunction(e) {
+            if (e.lengthComputable) {
+                $("#divAddInforamtionDialog").show();
+                $("#txtuploadedMsgAdd").text("  " + fileName + " uploaded successfully");
+            }
+        }
 
     </script>
     <script src="~/Scripts/CustomJs/ClassRoom.js"></script>

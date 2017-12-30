@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Entity.SmartSchool;
+using System.IO;
 
 namespace SmartSchool.Controllers
 {
@@ -135,6 +136,29 @@ namespace SmartSchool.Controllers
             ViewBag.ClassList = classRoomsCollection.ClassRoom;
             TimeTableDto timeTableDto = new TimeTableDto();
             return View(timeTableDto);
+        }
+
+        [HttpPost]
+       
+        public ActionResult AsynFileUpload(HttpPostedFileBase file)
+        {
+            int count = 1;
+            if (file != null)
+            {
+                 
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/UploadedFiles"), fileName);
+                        file.SaveAs(path);
+                        count++;
+                    }
+                 
+            }
+            return new JsonResult
+            {
+                Data = "Successfully " + count + " file(s) uploaded"
+            };
         }
 
         public JsonResult GetTimetable(DataTableAjaxPostModel model)
