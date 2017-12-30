@@ -310,8 +310,12 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
     @RenderSection("scripts", required: false)  
+    <script>
+        function ShowAlert(data) {
+            $('.modal').hide();
+            $('.modal-backdrop').removeClass('in');
+            alert(data);
+        }
+    </script>
 </body>
 </html>
-
-
-
